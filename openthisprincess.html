@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Will You Be My Valentine? 💕</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Floating hearts animation */
+        .heart {
+            position: absolute;
+            font-size: 30px;
+            animation: float 6s infinite ease-in-out;
+            opacity: 0.7;
+            pointer-events: none;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+            }
+        }
+
+        .container {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 60px 50px;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            max-width: 600px;
+            animation: fadeIn 1s ease-in;
+            position: relative;
+            z-index: 5;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        h1 {
+            color: #ff4757;
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .subtitle {
+            color: #ff6b81;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .message {
+            color: #555;
+            font-size: 1.2em;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .emoji-row {
+            font-size: 2.5em;
+            margin: 20px 0;
+            animation: bounce 1s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        .button-container {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            position: relative;
+            min-height: 80px;
+        }
+
+        button {
+            padding: 15px 40px;
+            font-size: 1.2em;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .yes-btn {
+            background: linear-gradient(135deg, #ff6b6b, #ff4757);
+            color: white;
+            position: relative;
+            z-index: 10;
+        }
+
+        .yes-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255, 71, 87, 0.4);
+        }
+
+        .no-btn {
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+            color: #2d3436;
+            position: fixed;
+            transition: all 0.2s ease-out;
+            z-index: 15;
+        }
+
+        .no-btn:hover {
+            background: linear-gradient(135deg, #ffeaa7, #fdcb6e);
+            color: #2d3436;
+            transform: scale(1.05);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .response {
+            margin-top: 30px;
+            font-size: 2em;
+            color: #ff4757;
+            animation: celebrate 0.5s ease-in;
+        }
+
+        @keyframes celebrate {
+            0% {
+                transform: scale(0) rotate(-180deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            font-size: 20px;
+            animation: sparkle 1.5s infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% {
+                opacity: 0;
+                transform: scale(0);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Hint text */
+        .hint {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: #ff6b81;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeInHint 2s ease-in 3s forwards;
+        }
+
+        @keyframes fadeInHint {
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💖 My Dearest Valentine 💖</h1>
+        <div class="subtitle">For This Year Too... 🌹</div>
+        
+        <div class="emoji-row">
+            💕 💝 💗 💓 💞
+        </div>
+        
+        <div class="message">
+            Every moment with you feels like a dream come true. 
+            You make my heart skip a beat and my days brighter. 
+            <br><br>
+            <strong>Will you be my Valentine this year too?</strong>
+            <br><br>
+            Because life with you is simply magical ✨
+        </div>
+        
+        <div class="emoji-row">
+            🥰 😍 💑 🌺 🎀
+        </div>
+        
+        <div class="button-container" id="buttons">
+            <button class="yes-btn" onclick="sayYes()">Yes! 💕</button>
+            <button class="no-btn" id="noBtn">Maybe... 🤔</button>
+        </div>
+
+        <div class="hint">
+            (Psst... there's really only one right answer 😉)
+        </div>
+        
+        <div class="response hidden" id="response">
+            🎉 Yay! I'm the luckiest person alive! 🎉
+            <br>
+            I love you so much! 💕💕💕
+        </div>
+    </div>
+
+    <script>
+        // Create floating hearts
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = ['❤️', '💕', '💖', '💗', '💝'][Math.floor(Math.random() * 5)];
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = (Math.random() * 3 + 4) + 's';
+            heart.style.animationDelay = Math.random() * 5 + 's';
+            document.body.appendChild(heart);
+            
+            setTimeout(() => heart.remove(), 10000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 300);
+
+        function sayYes() {
+            document.getElementById('buttons').classList.add('hidden');
+            document.getElementById('response').classList.remove('hidden');
+            document.querySelector('.hint').style.display = 'none';
+            
+            // Hide the no button
+            document.getElementById('noBtn').style.display = 'none';
+            
+            // Create celebration sparkles
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    const sparkle = document.createElement('div');
+                    sparkle.classList.add('sparkle');
+                    sparkle.innerHTML = '✨';
+                    sparkle.style.left = Math.random() * 100 + '%';
+                    sparkle.style.top = Math.random() * 100 + '%';
+                    document.querySelector('.container').appendChild(sparkle);
+                    setTimeout(() => sparkle.remove(), 1500);
+                }, i * 100);
+            }
+        }
+
+        // Array of funny texts
+        const texts = [
+            'No way! 😊', 
+            'Try again! 💕', 
+            'Just say yes! 🥰', 
+            'You know you want to! 😘', 
+            'Come on! 💝', 
+            'Pretty please? 🌹',
+            'Think about it! 💭',
+            'Are you sure? 😉',
+            'Almost got me! 😄',
+            'Nice try! 💖'
+        ];
+        let textIndex = 0;
+        let moveCount = 0;
+
+        // Get the no button
+        const noBtn = document.getElementById('noBtn');
+
+        // Function to move button to random position on screen
+        function moveButton() {
+            // Get window dimensions
+            const windowWidth = window.innerWidth;
+            const windowHeight = window.innerHeight;
+            
+            // Get button dimensions
+            const btnWidth = noBtn.offsetWidth;
+            const btnHeight = noBtn.offsetHeight;
+            
+            // Calculate safe boundaries (with padding)
+            const padding = 20;
+            const maxX = windowWidth - btnWidth - padding;
+            const maxY = windowHeight - btnHeight - padding;
+            
+            // Generate random position
+            const newX = Math.random() * maxX + padding;
+            const newY = Math.random() * maxY + padding;
+            
+            // Apply new position
+            noBtn.style.left = newX + 'px';
+            noBtn.style.top = newY + 'px';
+            
+            // Change text
+            noBtn.textContent = texts[textIndex];
+            textIndex = (textIndex + 1) % texts.length;
+            
+            // Track moves
+            moveCount++;
+            
+            // After 10 moves, make it extra encouraging
+            if (moveCount === 10) {
+                noBtn.textContent = "Okay fine, just click YES! 😂💕";
+            }
+        }
+
+        // Move button on hover (mouseenter)
+        noBtn.addEventListener('mouseenter', moveButton);
+
+        // Also move on click attempt
+        noBtn.addEventListener('click', function(e) {
+            e.preventDefault();
+            moveButton();
+        });
+
+        // Initial position for no button
+        window.addEventListener('load', function() {
+            const containerRect = document.querySelector('.button-container').getBoundingClientRect();
+            noBtn.style.left = (containerRect.left + containerRect.width / 2 + 50) + 'px';
+            noBtn.style.top = containerRect.top + 'px';
+        });
+
+        // Reposition on window resize
+        window.addEventListener('resize', function() {
+            if (!document.getElementById('response').classList.contains('hidden')) return;
+            const containerRect = document.querySelector('.button-container').getBoundingClientRect();
+            noBtn.style.left = (containerRect.left + containerRect.width / 2 + 50) + 'px';
+            noBtn.style.top = containerRect.top + 'px';
+        });
+    </script>
+</body>
+</html>
